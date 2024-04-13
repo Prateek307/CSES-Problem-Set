@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+using ll = long long;
+int main()
+{ 
+    int n,q;
+    cin>>n>>q;
+    vector<ll> v(n);
+    for(auto &it : v)
+    cin>>it;
+
+    vector<ll> sumSubarray(n);
+    sumSubarray[0] = v[0];
+    ll i;
+    for(i = 1;i<n;i++)
+    {
+        sumSubarray[i] = sumSubarray[i-1] + v[i];
+    }
+    while(q--)
+    {
+        
+        int a,b;
+        cin>>a>>b;
+        a--;
+        b--;
+        if(a==0)
+        {
+        cout<<(sumSubarray[b])<<'\n';
+        }
+        else
+        cout<<(sumSubarray[b]-sumSubarray[a-1])<<'\n';
+    }
+
+    return 0;
+}
